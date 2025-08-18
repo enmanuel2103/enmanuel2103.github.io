@@ -13,5 +13,4 @@ Link de correo, telefono (abajo)
 Link de las redes sociales
 -----------
 API Correo
-Cuando selecciones el servicio llevarlo al formulario y completar.
 SEO
