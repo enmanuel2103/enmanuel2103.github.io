@@ -11,10 +11,7 @@ Cambiar imagenes de infecciones que tratamos y agregar texto
 Link de correo, telefono (arriba)
 Link de correo, telefono (abajo)
 Link de las redes sociales
-Comprar dominio y crear cuenta github
 -----------
 API Correo
-Jugar con los colores entre secciones
-icono y logo de la pagina
 Cuando selecciones el servicio llevarlo al formulario y completar.
 SEO
