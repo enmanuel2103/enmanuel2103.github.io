@@ -4,6 +4,23 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+//sm
+document.querySelectorAll(".service-link").forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault(); // evita saltos inesperados
+    const serviceName = this.getAttribute("data-service");
+    document.getElementById("subject").value = serviceName;
+    document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+
+
+
+
+
+
 !(function($) {
   "use strict";
 
@@ -187,3 +204,5 @@
   });
 
 })(jQuery);
+
+
