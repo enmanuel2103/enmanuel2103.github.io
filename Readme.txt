@@ -8,9 +8,7 @@ License: https://bootstrapmade.com/license/
 pendientes:
 Imagen de fondo profecional
 Cambiar imagenes de infecciones que tratamos y agregar texto
-Link de correo, telefono (arriba)
-Link de correo, telefono (abajo)
 Link de las redes sociales
 -----------
-API Correo
+API Formulario
 SEO
