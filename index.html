@@ -432,7 +432,7 @@
 
 
             <div id="contact" class="col-lg-8 mt-5 mt-lg-0">
-              <form action="https://formsubmit.co/7eb94f3912bc13f5107a539293f7c50d" method="POST" role="form" class="php-email-form">
+              <form id="contactForm" action="https://formsubmit.co/7eb94f3912bc13f5107a539293f7c50d" method="POST" role="form" class="php-email-form">
                 <div class="form-row">
                   <div class="col-md-6 form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -475,7 +475,7 @@
                   <div class="modal-content text-center p-4">
                     <h5 class="modal-title">❌ Error</h5>
                     <div class="modal-body">
-                      Hubo un problema al enviar el mensaje.
+                      Hubo un problema al enviar el mensaje. Revisa que los campos esten correctamente.
                     </div>
                   </div>
                 </div>
@@ -520,33 +520,48 @@
     <script src="assets/js/main.js"></script>
 
 
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Evita el envío inmediato
+  const form = this;
 
-    <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Evita el envío inmediato
-      const form = this;
+  // Validación de campos obligatorios
+  const name = form.querySelector("[name='name']").value.trim();
+  const email = form.querySelector("[name='email']").value.trim();
+  const subject = form.querySelector("[name='subject']").value.trim();
+  const message = form.querySelector("[name='message']").value.trim();
 
-      fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          form.reset();
-          const successModal = new bootstrap.Modal(document.getElementById("successModal"));
-          successModal.show();
-          setTimeout(() => successModal.hide(), 2000);
-        } else {
-          const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
-          errorModal.show();
-          setTimeout(() => errorModal.hide(), 2000);
-        }
-      }).catch(error => {
-        const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
-        errorModal.show();
-        setTimeout(() => errorModal.hide(), 2000);
-      });
-    });
-    </script>
+  if (!name || !email || !subject || !message) {
+    // Mostrar modal de error si algún campo está vacío
+    const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+    errorModal.show();
+    setTimeout(() => errorModal.hide(), 6000);
+    return; // Detiene el envío
+  }
+
+  // Si todos los campos están llenos, se envía el formulario
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      form.reset();
+      const successModal = new bootstrap.Modal(document.getElementById("successModal"));
+      successModal.show();
+      setTimeout(() => successModal.hide(), 2000);
+    } else {
+      const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+      errorModal.show();
+      setTimeout(() => errorModal.hide(), 6000);
+    }
+  }).catch(error => {
+    const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+    errorModal.show();
+    setTimeout(() => errorModal.hide(), 6000);
+  });
+});
+</script>
+
   </body>
 </html>
