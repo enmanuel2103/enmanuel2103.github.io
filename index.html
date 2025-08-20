@@ -329,6 +329,10 @@
         </div>
       </section><!-- End Frequently Asked Questions Section -->
 
+
+
+
+
       <!-- ======= Gallery Section ======= -->
       <section id="gallery" class="gallery">
         <div class="container">
@@ -336,66 +340,23 @@
             <h2>Infecciones que Tratamos</h2>
           </div>
         </div>
+
+
+
+
         <div class="container-fluid">
-          <div class="row no-gutters">
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-1.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-2.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-3.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-4.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-5.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-6.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-7.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="assets/img/gallery/gallery-8.jpg" class="venobox" data-gall="gallery-item">
-                  <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
+
+
+          <div class="row" id="instagram-feed">
           </div>
+
+
+
         </div>
+
+
+
+
       </section><!-- End Gallery Section -->
 
       <!-- ======= Contact Section ======= -->
@@ -545,7 +506,7 @@ document.getElementById("contactForm").addEventListener("submit", function(event
       form.reset();
       const successModal = new bootstrap.Modal(document.getElementById("successModal"));
       successModal.show();
-      setTimeout(() => successModal.hide(), 2000);
+      setTimeout(() => successModal.hide(), 5000);
     } else {
       const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
       errorModal.show();
@@ -619,7 +580,24 @@ document.getElementById("contactForm").addEventListener("submit", function(event
   "url": "https://drenmanuelnuñez.com"
 }
 </script>
-
+<script>
+fetch("https://graph.facebook.com/v23.0/742211021995938/media?fields=id,caption,media_url,permalink,timestamp&access_token=EAAUq2Ar6OCsBPArZCQiQlp8zf0qL2TBfhiZC2JPSCVKOM0PDzfBLW1fIyN2QFVqltZAMlZAYeK0Iecz7SZBTVnJSlOquBJpClZAIOSgIuAL9YMb0k2WTnZBKxdX1kJ5KMxGlduM3br5PhYqt1smtkeRuVcANPF0D822oTl1gBE8Bh08ppgZBzXFfBC2IV5TZBNlMzwQZDZD")
+  .then(res => res.json())
+  .then(data => {
+    let html = "";
+    data.data.forEach(post => {
+      html += `
+        <div>
+          <a href="${post.permalink}" target="_blank">
+            <img src="${post.media_url}" width="200"/>
+          </a>
+          <p>${post.caption || ""}</p>
+        </div>
+      `;
+    });
+    document.getElementById("instagram-feed").innerHTML = html;
+  });
+</script>
 
   </body>
 </html>
