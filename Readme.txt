@@ -1,7 +1,4 @@
 pendientes:
-    Imagen de fondo profecional
+    Imagen de fondo profecional / seo
     Modificar credenciales de envio de correo
     SEO en Google
-----------------
-    Cambiar imagenes de infecciones que tratamos y agregar texto
-    SEO en imagenes faltantes

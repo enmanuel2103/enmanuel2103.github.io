@@ -1736,3 +1736,34 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-item .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(25, 119, 204, 0.85); /* azul del template */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-item.active .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
